@@ -1,11 +1,11 @@
 #include "Passenger.h"
 #include <iostream>
 
-// Constructor
+
 Passenger::Passenger(int id, const std::string& name, double locationX, double locationY, double destinationX, double destinationY)
     : id(id), name(name), locationX(locationX), locationY(locationY), destinationX(destinationX), destinationY(destinationY) {}
 
-// Getters
+
 int Passenger::getId() const {
     return id;
 }
@@ -30,7 +30,7 @@ double Passenger::getDestinationY() const {
     return destinationY;
 }
 
-// Setters
+
 void Passenger::setLocation(double x, double y) {
     locationX = x;
     locationY = y;
@@ -41,7 +41,7 @@ void Passenger::setDestination(double x, double y) {
     destinationY = y;
 }
 
-// Display Passenger Info
+
 void Passenger::display() const {
     std::cout << "[Passenger ID: " << id 
               << ", Name: " << name 

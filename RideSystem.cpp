@@ -2,10 +2,10 @@
 #include <iostream>
 #include <cmath>
 
-// Constructor
+
 RideSystem::RideSystem() {}
 
-// Destructor - clean up dynamically allocated Passenger and Driver objects
+
 RideSystem::~RideSystem() {
     for (Driver* d : drivers) {
         delete d;
@@ -18,7 +18,7 @@ RideSystem::~RideSystem() {
     passengers.clear();
 }
 
-// Find a passenger by ID
+
 Passenger* RideSystem::findPassenger(int id) const {
     for (Passenger* p : passengers) {
         if (p->getId() == id) {
@@ -28,7 +28,7 @@ Passenger* RideSystem::findPassenger(int id) const {
     return nullptr;
 }
 
-// Find a driver by ID
+
 Driver* RideSystem::findDriver(int id) const {
     for (Driver* d : drivers) {
         if (d->getId() == id) {
@@ -38,7 +38,7 @@ Driver* RideSystem::findDriver(int id) const {
     return nullptr;
 }
 
-// Register a driver
+// Register driver
 void RideSystem::registerDriver(int id, const std::string& name, double x, double y, double rating) {
     if (findDriver(id) != nullptr) {
         std::cout << "Error: Driver with ID " << id << " already exists." << std::endl;
@@ -48,7 +48,7 @@ void RideSystem::registerDriver(int id, const std::string& name, double x, doubl
     std::cout << "Driver " << name << " registered successfully." << std::endl;
 }
 
-// Register a passenger
+// Register passenger
 void RideSystem::registerPassenger(int id, const std::string& name, double x, double y, double destX, double destY) {
     if (findPassenger(id) != nullptr) {
         std::cout << "Error: Passenger with ID " << id << " already exists." << std::endl;
@@ -58,7 +58,7 @@ void RideSystem::registerPassenger(int id, const std::string& name, double x, do
     std::cout << "Passenger " << name << " registered successfully." << std::endl;
 }
 
-// Request a ride
+// Request ride
 void RideSystem::requestRide(int passengerId) {
     Passenger* passenger = findPassenger(passengerId);
     if (passenger == nullptr) {
@@ -107,7 +107,7 @@ void RideSystem::requestRide(int passengerId) {
     }
 }
 
-// Complete a ride
+
 void RideSystem::completeRide(int driverId) {
     Driver* driver = findDriver(driverId);
     if (driver == nullptr) {
@@ -125,18 +125,18 @@ void RideSystem::completeRide(int driverId) {
     double destX = passenger->getDestinationX();
     double destY = passenger->getDestinationY();
 
-    // Complete the ride and update driver location to passenger destination
+    
     driver->setLocation(destX, destY);
     activeRides.erase(it);
 
     std::cout << "Driver " << driver->getName() << " completed the ride for " << passenger->getName() 
               << ". New location: (" << destX << ", " << destY << ")." << std::endl;
 
-    // Check if there are waitlisted passengers
+    
     if (!waitingQueue.isEmpty()) {
         Passenger* nextPassenger = waitingQueue.dequeue();
         
-        // Immediately assign this driver to the next passenger
+        
         driver->setAvailable(false);
         activeRides[driverId] = nextPassenger;
 
@@ -146,13 +146,13 @@ void RideSystem::completeRide(int driverId) {
         std::cout << "Driver " << driver->getName() << " immediately matched with waitlisted Passenger " 
                   << nextPassenger->getName() << " (Distance: " << dist << " units)." << std::endl;
     } else {
-        // Mark driver available
+        
         driver->setAvailable(true);
         std::cout << "Driver " << driver->getName() << " is now available." << std::endl;
     }
 }
 
-// Getters
+
 const std::vector<Driver*>& RideSystem::getDrivers() const {
     return drivers;
 }
@@ -165,7 +165,7 @@ const Queue& RideSystem::getWaitingQueue() const {
     return waitingQueue;
 }
 
-// Display system status
+
 void RideSystem::displayStatus() const {
     std::cout << "\n=== RIDE SYSTEM STATUS ===" << std::endl;
     

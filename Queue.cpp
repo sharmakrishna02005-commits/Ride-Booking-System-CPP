@@ -1,17 +1,17 @@
 #include "Queue.h"
 #include <iostream>
 
-// Constructor
+
 Queue::Queue() : front(nullptr), rear(nullptr), size(0) {}
 
-// Destructor - Clean up all remaining nodes to prevent memory leaks
+
 Queue::~Queue() {
     while (!isEmpty()) {
         dequeue();
     }
 }
 
-// Add passenger to the back of the queue
+
 void Queue::enqueue(Passenger* p) {
     if (p == nullptr) return;
     
@@ -25,7 +25,7 @@ void Queue::enqueue(Passenger* p) {
     size++;
 }
 
-// Remove passenger from the front of the queue
+
 Passenger* Queue::dequeue() {
     if (isEmpty()) {
         return nullptr;
@@ -44,7 +44,7 @@ Passenger* Queue::dequeue() {
     return passenger;
 }
 
-// Peek at the front passenger without removing
+
 Passenger* Queue::peek() const {
     if (isEmpty()) {
         return nullptr;
@@ -52,12 +52,12 @@ Passenger* Queue::peek() const {
     return front->passenger;
 }
 
-// Check if queue is empty
+
 bool Queue::isEmpty() const {
     return front == nullptr;
 }
 
-// Get the current size of the queue
+
 int Queue::getSize() const {
     return size;
 }

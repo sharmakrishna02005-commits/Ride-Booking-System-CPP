@@ -1,0 +1,8 @@
+# Ignore executables and test files
+*.exe
+*.o
+*.obj
+
+# Ignore intermediate test files/directories
+scratch/test_*.exe
+scratch/*.exe

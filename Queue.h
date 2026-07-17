@@ -17,13 +17,13 @@ private:
     int size;
 
 public:
-    // Constructor
+    
     Queue();
 
-    // Destructor
+    
     ~Queue();
 
-    // Operations
+    
     void enqueue(Passenger* p);
     Passenger* dequeue();
     Passenger* peek() const;
@@ -31,4 +31,4 @@ public:
     int getSize() const;
 };
 
-#endif // QUEUE_H
+#endif 

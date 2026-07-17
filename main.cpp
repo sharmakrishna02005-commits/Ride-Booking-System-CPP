@@ -3,7 +3,7 @@
 #include <limits>
 #include "RideSystem.h"
 
-// Helper function to safely read double
+
 double readDouble(const std::string& prompt) {
     double value;
     while (true) {
@@ -17,7 +17,7 @@ double readDouble(const std::string& prompt) {
     }
 }
 
-// Helper function to safely read int
+
 int readInt(const std::string& prompt) {
     int value;
     while (true) {
@@ -31,7 +31,7 @@ int readInt(const std::string& prompt) {
     }
 }
 
-// Helper function to clear input buffer
+
 void clearInputBuffer() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -40,14 +40,14 @@ void clearInputBuffer() {
 int main() {
     RideSystem system;
 
-    // Seed Data
+    
     std::cout << "Initializing system with seed data..." << std::endl;
-    // Drivers: Alice at (0, 0), Bob at (5, 5), Charlie at (10, 10)
+    
     system.registerDriver(1, "krishna", 0.0, 0.0, 4.8);
     system.registerDriver(2, "Varun", 5.0, 2.0, 4.5);
     system.registerDriver(3, "Dev", 1.0, 1.0, 4.9);
 
-    // Passengers: David at (1, 1), Eve at (6, 6), Frank at (12, 12)
+    
     system.registerPassenger(101, "Ravi", 1.0, 1.0, 4.0, 4.0);
     system.registerPassenger(102, "Suresh", 6.0, 6.0, 0.0, 0.0);
     system.registerPassenger(103, "Ajay", 12.0, 12.0, 20.0, 20.0);

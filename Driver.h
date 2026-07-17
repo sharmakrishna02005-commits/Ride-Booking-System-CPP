@@ -13,10 +13,10 @@ private:
     double rating;
 
 public:
-    // Constructor
+    
     Driver(int id, const std::string& name, double locationX, double locationY, double rating = 5.0);
 
-    // Getters
+    
     int getId() const;
     std::string getName() const;
     double getLocationX() const;
@@ -24,13 +24,13 @@ public:
     bool isAvailable() const;
     double getRating() const;
 
-    // Setters
+    
     void setLocation(double x, double y);
     void setAvailable(bool avail);
     void setRating(double rate);
 
-    // Display Driver Info
+    
     void display() const;
 };
 
-#endif // DRIVER_H
+#endif 

@@ -1,11 +1,11 @@
 #include "Driver.h"
 #include <iostream>
 
-// Constructor
+
 Driver::Driver(int id, const std::string& name, double locationX, double locationY, double rating)
     : id(id), name(name), locationX(locationX), locationY(locationY), available(true), rating(rating) {}
 
-// Getters
+
 int Driver::getId() const {
     return id;
 }
@@ -30,7 +30,7 @@ double Driver::getRating() const {
     return rating;
 }
 
-// Setters
+
 void Driver::setLocation(double x, double y) {
     locationX = x;
     locationY = y;
@@ -44,7 +44,7 @@ void Driver::setRating(double rate) {
     rating = rate;
 }
 
-// Display Driver Info
+
 void Driver::display() const {
     std::cout << "[Driver ID: " << id 
               << ", Name: " << name 

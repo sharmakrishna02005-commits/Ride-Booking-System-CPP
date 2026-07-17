@@ -63,7 +63,3 @@ Execute the compiled binary:
 
 ---
 
-## 👨‍💻 Resume Talking Points
-* **Algorithm Complexity**: "Leveraged custom heap structures to optimize driver matching down to $O(\log N)$ time, significantly improving search efficiency compared to a naive linear scan."
-* **Data Buffer Management**: "Designed a custom FIFO queue to handle requests during high-demand states when driver availability is zero, ensuring booking fairness."
-* **State Coordination**: "Built a robust, multi-threaded-ready state manager coordinating driver positions, passenger destinations, and waiting queues."

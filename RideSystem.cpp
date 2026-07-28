@@ -1,6 +1,8 @@
 #include "RideSystem.h"
 #include <iostream>
 #include <cmath>
+#include <fstream>
+#include <sstream>
 
 
 RideSystem::RideSystem() {}
@@ -37,7 +39,55 @@ Driver* RideSystem::findDriver(int id) const {
     }
     return nullptr;
 }
+void RideSystem::loadDriversFromCSV(const std::string& filepath) {
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        std::cout << "Warning: Could not open " << filepath << std::endl;
+        return;
+    }
 
+    std::string line;
+    std::getline(file, line); // skip header row
+
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string idStr, name, xStr, yStr, ratingStr;
+
+        std::getline(ss, idStr, ',');
+        std::getline(ss, name, ',');
+        std::getline(ss, xStr, ',');
+        std::getline(ss, yStr, ',');
+        std::getline(ss, ratingStr, ',');
+
+        registerDriver(std::stoi(idStr), name, std::stod(xStr), std::stod(yStr), std::stod(ratingStr));
+    }
+}
+
+void RideSystem::loadPassengersFromCSV(const std::string& filepath) {
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        std::cout << "Warning: Could not open " << filepath << std::endl;
+        return;
+    }
+
+    std::string line;
+    std::getline(file, line); // skip header row
+
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string idStr, name, xStr, yStr, destXStr, destYStr;
+
+        std::getline(ss, idStr, ',');
+        std::getline(ss, name, ',');
+        std::getline(ss, xStr, ',');
+        std::getline(ss, yStr, ',');
+        std::getline(ss, destXStr, ',');
+        std::getline(ss, destYStr, ',');
+
+        registerPassenger(std::stoi(idStr), name, std::stod(xStr), std::stod(yStr),
+                           std::stod(destXStr), std::stod(destYStr));
+    }
+}
 // Register driver
 void RideSystem::registerDriver(int id, const std::string& name, double x, double y, double rating) {
     if (findDriver(id) != nullptr) {

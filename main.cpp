@@ -39,19 +39,9 @@ void clearInputBuffer() {
 
 int main() {
     RideSystem system;
-
-    
-    std::cout << "Initializing system with seed data..." << std::endl;
-    
-    system.registerDriver(1, "krishna", 0.0, 0.0, 4.8);
-    system.registerDriver(2, "Varun", 5.0, 2.0, 4.5);
-    system.registerDriver(3, "Dev", 1.0, 1.0, 4.9);
-
-    
-    system.registerPassenger(101, "Ravi", 1.0, 1.0, 4.0, 4.0);
-    system.registerPassenger(102, "Suresh", 6.0, 6.0, 0.0, 0.0);
-    system.registerPassenger(103, "Ajay", 12.0, 12.0, 20.0, 20.0);
-    std::cout << "System initialized successfully.\n" << std::endl;
+    system.loadDriversFromCSV("data/drivers.csv");
+    system.loadPassengersFromCSV("data/passengers.csv");
+    std::cout << "System initialized with sample data.\n" << std::endl;
 
     int choice = 0;
     while (true) {

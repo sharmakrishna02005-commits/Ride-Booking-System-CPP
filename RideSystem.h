@@ -29,6 +29,8 @@ public:
 
     
     void registerDriver(int id, const std::string& name, double x, double y, double rating = 5.0);
+    void loadDriversFromCSV(const std::string& filepath);
+    void loadPassengersFromCSV(const std::string& filepath);
     void registerPassenger(int id, const std::string& name, double x, double y, double destX, double destY);
 
     
